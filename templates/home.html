@@ -1,20 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    {% if title %}
-        <title>{{ title }}</title>
-    {% else %}
-        <title>Flask Blog</title>
-    {% endif %}
-</head>
-<body>
+{% extends "layout.html" %}
+{% block content %}
     {%for i in post%}
-        <h1>{{ i.title }}</h1>
-        <p>By {{ i.author }} on {{ i.date_posted }}</p>
-        <p>{{ i.content }}</p>
+        <article class="media content-section">
+            <div class="media-body">
+            <div class="article-metadata">
+                <a class="mr-2" href="#">{{ i.author }}</a>
+                <small class="text-muted">{{ i.date_posted }}</small>
+            </div>
+            <h2><a class="article-title" href="#">{{ i.title }}</a></h2>
+            <p class="article-content">{{ i.content }}</p>
+            </div>
+        </article>
     {%endfor%}
-</body>
-</html>
+{% endblock content %}
